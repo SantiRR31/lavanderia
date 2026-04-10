@@ -23,7 +23,7 @@ const Layout = () => {
             {/* Sidebar - Solid White */}
             <aside className="w-64 bg-white border-r border-slate-200 flex flex-col fixed h-full z-20 transition-all">
                 <div className="p-6 flex items-center gap-3">
-                    <div className="bg-[#ec5b13] rounded-lg p-2.5 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
+                    <div className="bg-[#1B9B9A] rounded-lg p-2.5 flex items-center justify-center text-white shadow-lg shadow-[#1B9B9A]/20">
                         <span className="material-symbols-outlined font-bold">local_laundry_service</span>
                     </div>
                     <div className="flex flex-col">
@@ -40,7 +40,7 @@ const Layout = () => {
                                 key={item.path}
                                 to={item.path}
                                 className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 ${isActive
-                                    ? 'bg-orange-50 text-[#ec5b13] font-black shadow-sm'
+                                    ? 'bg-[#1B9B9A] text-white font-black shadow-sm'
                                     : 'text-slate-500 hover:bg-slate-50 font-bold'
                                     }`}
                             >
@@ -55,7 +55,7 @@ const Layout = () => {
 
                 <div className="p-4 border-t border-slate-100 bg-slate-50/50">
                     <div className="flex items-center gap-3 px-2 py-3 mb-2">
-                        <div className="size-10 rounded-full bg-orange-100 flex items-center justify-center text-[#ec5b13] font-black border-2 border-white shadow-sm overflow-hidden">
+                        <div className="size-10 rounded-full bg-[#1B9B9A] flex items-center justify-center text-white font-black border-2 border-white shadow-sm overflow-hidden">
                             <span className="material-symbols-outlined">person</span>
                         </div>
                         <div className="flex flex-col overflow-hidden">

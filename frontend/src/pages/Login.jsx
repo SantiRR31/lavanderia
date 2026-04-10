@@ -29,14 +29,14 @@ const Login = () => {
     return (
         <div className="min-h-screen flex selection:bg-primary-100 selection:text-primary-700">
             {/* Visual Side */}
-            <div className="hidden lg:flex lg:w-1/3 bg-primary-600 p-20 flex-col justify-between text-white relative h-screen">
+            <div className="hidden lg:flex lg:w-1/3 bg-[#475569] p-20 flex-col justify-between text-white relative h-screen">
                 <div className="z-10">
-                    <h1 className="text-4xl font-extrabold mb-4">Lavandería Pro</h1>
-                    <p className="text-primary-100 font-medium">Gestión inteligente para negocios de limpieza industrial y doméstica.</p>
+                    <h1 className="text-4xl font-extrabold mb-4">Hola</h1>
+                    <p className="text-primary-100 font-medium">Gestión inteligente para ordenes</p>
                 </div>
                 <div className="z-10 flex flex-col gap-6">
                     <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-md border border-white/20">
-                        <p className="text-sm font-bold opacity-70 mb-2 italic">TIP ADMINISTRADOR</p>
+                        <p className="text-sm font-bold opacity-70 mb-2 italic">Sugerencia</p>
                         <p className="text-sm">Recuerde cerrar la sesión al finalizar el turno para mantener la seguridad de los datos de los clientes.</p>
                     </div>
                 </div>
@@ -49,23 +49,23 @@ const Login = () => {
             <div className="w-full lg:w-2/3 bg-white flex items-center justify-center p-8">
                 <div className="w-full max-w-lg space-y-12 animate-in fade-in slide-in-from-right-16 duration-700">
                     <div className="space-y-4">
-                        <h2 className="text-4xl font-black text-slate-900 tracking-tight">Acceso Administrativo</h2>
+                        <h2 className="uppercase text-4xl font-black text-slate-900 tracking-tight">Acceso de administrador</h2>
                         <p className="text-slate-500 font-medium text-lg leading-relaxed">Bienvenido de nuevo. Introduzca sus credenciales para gestionar el sistema de lavandería.</p>
                     </div>
 
                     <form onSubmit={handleLogin} className="space-y-8">
                         <div className="space-y-6">
                             <div className="group">
-                                <label className="block text-sm font-extrabold text-slate-500 group-focus-within:text-primary-600 transition-colors uppercase tracking-widest mb-3">Usuario</label>
+                                <label className="block text-sm font-extrabold text-slate-500 group-focus-within:text-[#1B9B9A] transition-colors uppercase tracking-widest mb-3">Usuario</label>
                                 <div className="relative">
-                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-primary-500 transition-colors">
+                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#1B9B9A] transition-colors">
                                         <User size={20} />
                                     </div>
                                     <input
                                         type="text"
                                         required
                                         placeholder="Escriba su usuario"
-                                        className="w-full pl-14 pr-6 py-5 bg-slate-50 border-2 border-slate-50 rounded-3xl focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 bg-white transition-all text-slate-700 font-bold placeholder:font-medium"
+                                        className="w-full pl-14 pr-6 py-5 bg-slate-50 border-2 border-slate-50 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#1B9B9A]/20 focus:border-[#1B9B9A] focus:shadow-[0_0_15px_rgba(27,155,154,0.15)] bg-white transition-all text-slate-700 font-bold placeholder:font-medium"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
                                     />
@@ -73,16 +73,16 @@ const Login = () => {
                             </div>
 
                             <div className="group">
-                                <label className="block text-sm font-extrabold text-slate-500 group-focus-within:text-primary-600 transition-colors uppercase tracking-widest mb-3">Contraseña</label>
+                                <label className="block text-sm font-extrabold text-slate-500 group-focus-within:text-[#1B9B9A] transition-colors uppercase tracking-widest mb-3">Contraseña</label>
                                 <div className="relative">
-                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-primary-500 transition-colors">
+                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-[#1B9B9A] transition-colors">
                                         <Lock size={20} />
                                     </div>
                                     <input
                                         type="password"
                                         required
                                         placeholder="••••••••"
-                                        className="w-full pl-14 pr-6 py-5 bg-slate-50 border-2 border-slate-50 rounded-3xl focus:outline-none focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 bg-white transition-all text-slate-700 font-bold placeholder:font-medium"
+                                        className="w-full pl-14 pr-6 py-5 bg-slate-50 border-2 border-slate-50 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#1B9B9A]/20 focus:border-[#1B9B9A] focus:shadow-[0_0_15px_rgba(27,155,154,0.15)] bg-white transition-all text-slate-700 font-bold placeholder:font-medium"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
@@ -100,7 +100,7 @@ const Login = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-slate-900 hover:bg-slate-800 text-white font-black py-5 px-8 rounded-3xl shadow-2xl shadow-slate-900/20 active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:scale-100"
+                            className="w-full bg-[#1B9B9A] hover:bg-[#1B9B9A]/80 text-white font-black py-5 px-8 rounded-3xl shadow-2xl shadow-slate-900/20 active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:scale-100"
                         >
                             {loading ? (
                                 <Loader2 className="w-5 h-5 animate-spin" />

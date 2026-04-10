@@ -71,11 +71,11 @@ const CustomerSearch = () => {
             <div className="absolute inset-0 -z-10 bg-slate-50 overflow-hidden">
                 <div className="absolute -top-20 -left-20 w-[40rem] h-[40rem] bg-[#1B9B9A]/30 rounded-full blur-[100px] animate-pulse"></div>
                 <div className="absolute -bottom-20 -right-20 w-[35rem] h-[35rem] bg-[#94273E]/20 rounded-full blur-[100px]"></div>
-                
+
                 {/* Burbujas flotantes */}
                 {[...Array(15)].map((_, i) => (
-                    <div 
-                        key={i} 
+                    <div
+                        key={i}
                         className="bubble"
                         style={{
                             left: `${Math.random() * 100}%`,
@@ -91,8 +91,8 @@ const CustomerSearch = () => {
             <div className="w-full max-w-md bg-white/70 backdrop-blur-2xl p-10 rounded-[3rem] border border-white shadow-2xl animate-in zoom-in-95 duration-500 fade-in">
                 <div className="text-center mb-10">
                     <div className="inline-flex items-center justify-center w-20 h-20 bg-slate-900 text-white rounded-[2rem] shadow-xl mb-6 text-3xl">🫧</div>
-                    <h2 className="text-3xl font-black text-slate-800 tracking-tight">Rastrea tu pedido</h2>
-                    <p className="text-slate-500 font-medium text-sm mt-3">Ingresa el ticket que recibiste en sucursal</p>
+                    <h2 className="text-3xl font-black text-[#1B9B9A] tracking-tight">Rastrea tu pedido</h2>
+                    <p className="text-slate-500 font-medium text-sm mt-3">Ingresa el codigo localizado dentro del ticket que recibiste en sucursal</p>
                 </div>
 
                 {error && (
@@ -102,11 +102,11 @@ const CustomerSearch = () => {
                 )}
 
                 <form onSubmit={handleSearch} className="space-y-6">
-                    <input 
+                    <input
                         required
-                        type="text" 
+                        type="text"
                         className="w-full px-6 py-4 bg-white/80 border-2 border-slate-100 rounded-[2rem] outline-none focus:border-[#1B9B9A] font-bold text-slate-700 uppercase focus:ring-4 focus:ring-[#1B9B9A]/10 transition-all"
-                        placeholder="Ticket (ej. LAV-10234)"
+                        placeholder="Codigo (ej. T-123456-AA-BB)"
                         value={ticket}
                         onChange={(e) => {
                             setTicket(e.target.value);
@@ -114,7 +114,7 @@ const CustomerSearch = () => {
                         }}
                     />
 
-                    <button 
+                    <button
                         type="submit"
                         disabled={loading}
                         className={`relative w-full h-16 flex items-center justify-center rounded-[2rem] font-black tracking-wider text-base uppercase shadow-xl transition-all duration-500 disabled:opacity-90 disabled:cursor-wait
@@ -130,10 +130,10 @@ const CustomerSearch = () => {
                         )}
                     </button>
                 </form>
-                
+
                 <div className="mt-10 pt-6 border-t border-slate-200/50 text-center">
                     <p className="text-xs text-slate-400 font-black uppercase tracking-widest">
-                        ¿Problemas con tu ticket?<br/>
+                        ¿Problemas con tu ticket?<br />
                         <a className="text-[#1B9B9A] hover:text-[#158080] font-black underline underline-offset-4 mt-2 inline-block transition-colors" href="#">
                             Soporte en línea
                         </a>

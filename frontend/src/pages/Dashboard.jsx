@@ -77,7 +77,7 @@ const Dashboard = () => {
         <div className="space-y-10 animate-in fade-in duration-700">
             <div className="flex items-end justify-between">
                 <div>
-                    <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight">Resumen Operativo</h2>
+                    <h2 className="text-3xl font-black text-[#1B9B9A] uppercase tracking-tight">Resumen Operativo</h2>
                     <p className="text-slate-500 font-bold mt-1">Vista general de ordenes</p>
                 </div>
                 <div className="text-right">

@@ -4,7 +4,7 @@ import { Shield, Users, Trash2, Edit2, Plus, Search, Loader2, X, Save, ShieldAle
 
 const Settings = () => {
     const [activeTab, setActiveTab] = useState('admins');
-    
+
     // Announcements state
     const [announcements, setAnnouncements] = useState([]);
     const [announcementsLoading, setAnnouncementsLoading] = useState(false);
@@ -77,8 +77,8 @@ const Settings = () => {
             setFilteredCustomers(customers);
         } else {
             const lowerSearch = searchTerm.toLowerCase();
-            setFilteredCustomers(customers.filter(c => 
-                c.name.toLowerCase().includes(lowerSearch) || 
+            setFilteredCustomers(customers.filter(c =>
+                c.name.toLowerCase().includes(lowerSearch) ||
                 c.phone.includes(lowerSearch)
             ));
         }
@@ -176,44 +176,41 @@ const Settings = () => {
         <div className="space-y-8 animate-in fade-in duration-500">
             <header className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-black text-slate-900 tracking-tight">Configuración del Sistema</h1>
+                    <h1 className="text-3xl font-black text-[#1B9B9A] tracking-tight">Configuración del Sistema</h1>
                     <p className="text-slate-500 font-medium mt-1">Gestión de accesos y base de datos de usuarios.</p>
                 </div>
             </header>
 
             {/* Custom Tabs */}
             <div className="flex gap-4 border-b border-slate-200">
-                <button 
+                <button
                     onClick={() => setActiveTab('admins')}
-                    className={`pb-4 px-2 text-sm font-black uppercase tracking-widest transition-all ${
-                        activeTab === 'admins' 
-                        ? 'text-[#ec5b13] border-b-2 border-[#ec5b13]' 
+                    className={`pb-4 px-2 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'admins'
+                        ? 'text-[#16807F] border-b-2 border-[#16807F]'
                         : 'text-slate-400 hover:text-slate-600'
-                    }`}
+                        }`}
                 >
                     <div className="flex items-center gap-2">
                         <Shield size={16} /> Administradores
                     </div>
                 </button>
-                <button 
+                <button
                     onClick={() => setActiveTab('customers')}
-                    className={`pb-4 px-2 text-sm font-black uppercase tracking-widest transition-all ${
-                        activeTab === 'customers' 
-                        ? 'text-blue-600 border-b-2 border-blue-600' 
+                    className={`pb-4 px-2 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'customers'
+                        ? 'text-[#1B9B9A] border-b-2 border-[#1B9B9A]'
                         : 'text-slate-400 hover:text-slate-600'
-                    }`}
+                        }`}
                 >
                     <div className="flex items-center gap-2">
                         <Users size={16} /> Clientes
                     </div>
                 </button>
-                <button 
+                <button
                     onClick={() => setActiveTab('announcements')}
-                    className={`pb-4 px-2 text-sm font-black uppercase tracking-widest transition-all ${
-                        activeTab === 'announcements' 
-                        ? 'text-purple-600 border-b-2 border-purple-600' 
+                    className={`pb-4 px-2 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'announcements'
+                        ? 'text-[#2FAFAE] border-b-2 border-[#2FAFAE]'
                         : 'text-slate-400 hover:text-slate-600'
-                    }`}
+                        }`}
                 >
                     <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-base">campaign</span> Avisos
@@ -226,9 +223,9 @@ const Settings = () => {
                 <div className="space-y-6">
                     <div className="flex justify-between items-center px-2">
                         <h2 className="text-xl font-bold text-slate-800">Avisos Públicos</h2>
-                        <button 
+                        <button
                             onClick={() => setShowAnnouncementModal(true)}
-                            className="bg-purple-600 hover:bg-purple-700 text-white font-black py-3 px-6 rounded-2xl shadow-xl shadow-purple-600/20 transition-all flex items-center gap-2 active:scale-95 text-sm"
+                            className="bg-[#475569] hover:bg-[#1B9B9A] text-white font-black py-3 px-6 rounded-2xl shadow-xl shadow-slate-600/20 transition-all flex items-center gap-2 active:scale-95 text-sm"
                         >
                             <Plus size={18} /> Nuevo
                         </button>
@@ -241,11 +238,11 @@ const Settings = () => {
                             <div className="col-span-full py-12 text-center text-slate-400 font-medium border-2 border-dashed border-slate-200 rounded-3xl">No hay avisos registrados.</div>
                         ) : (
                             announcements.map(ann => (
-                                <div key={ann.id} className={`bg-white rounded-3xl overflow-hidden border-2 transition-all ${ann.active ? 'border-purple-200 shadow-lg shadow-purple-100' : 'border-slate-100 opacity-60'}`}>
+                                <div key={ann.id} className={`bg-white rounded-3xl overflow-hidden border-2 transition-all ${ann.active ? 'border-[#1B9B9A]/30 shadow-lg shadow-[#1B9B9A]/10' : 'border-slate-100 opacity-60'}`}>
                                     <div className="h-40 bg-slate-100 relative overflow-hidden group">
                                         <img src={ann.imageUrl} alt={ann.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => e.target.src = 'https://via.placeholder.com/400x200?text=Imagen+No+Valida'} />
                                         <div className="absolute top-3 right-3 flex gap-2">
-                                            <button onClick={() => handleToggleAnnouncement(ann.id)} className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-lg backdrop-blur-md border ${ann.active ? 'bg-green-500/90 text-white border-green-400' : 'bg-slate-900/80 text-white border-slate-700'}`}>
+                                            <button onClick={() => handleToggleAnnouncement(ann.id)} className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-lg backdrop-blur-md border ${ann.active ? 'bg-[#1B9B9A] text-white border-[#1B9B9A]' : 'bg-slate-900/80 text-white border-slate-700'}`}>
                                                 {ann.active ? 'Activo' : 'Inactivo'}
                                             </button>
                                         </div>
@@ -271,7 +268,7 @@ const Settings = () => {
                 <div className="space-y-6">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-slate-800">Cuentas de Acceso</h2>
-                        <button 
+                        <button
                             onClick={() => setShowAdminModal(true)}
                             className="bg-slate-900 hover:bg-slate-800 text-white font-black py-3 px-6 rounded-2xl shadow-xl shadow-slate-900/10 transition-all flex items-center gap-2 active:scale-95 text-sm"
                         >
@@ -296,7 +293,7 @@ const Settings = () => {
                                         <tr key={admin.id} className="hover:bg-slate-50 transition-colors">
                                             <td className="px-8 py-5 text-sm font-bold text-slate-500">#{admin.id}</td>
                                             <td className="px-8 py-5 text-sm font-black text-slate-800 flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-orange-100 text-[#ec5b13] flex items-center justify-center">
+                                                <div className="w-8 h-8 rounded-full bg-[#1B9B9A]/10 text-[#1B9B9A] flex items-center justify-center">
                                                     <span className="material-symbols-outlined text-sm">person</span>
                                                 </div>
                                                 {admin.username}
@@ -305,7 +302,7 @@ const Settings = () => {
                                                 )}
                                             </td>
                                             <td className="px-8 py-5 text-right">
-                                                <button 
+                                                <button
                                                     onClick={() => handleDeleteAdmin(admin.id, admin.username)}
                                                     className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors disabled:opacity-30"
                                                     disabled={admin.username === currentUser}
@@ -361,14 +358,14 @@ const Settings = () => {
                                                 <td className="px-8 py-5 text-sm font-bold text-slate-500">{customer.phone}</td>
                                                 <td className="px-8 py-5 text-sm font-bold text-slate-500">{customer.orderCount} historial</td>
                                                 <td className="px-8 py-5 flex items-center justify-end gap-2">
-                                                    <button 
+                                                    <button
                                                         onClick={() => setEditingCustomer(customer)}
-                                                        className="p-2 text-blue-500 hover:text-blue-700 hover:bg-blue-50 rounded-xl transition-colors"
+                                                        className="p-2 text-[#1B9B9A] hover:text-[#16807F] hover:bg-[#1B9B9A]/10 rounded-xl transition-colors"
                                                         title="Editar cliente"
                                                     >
                                                         <Edit2 size={18} />
                                                     </button>
-                                                    <button 
+                                                    <button
                                                         onClick={() => handleDeleteCustomer(customer.id, customer.name)}
                                                         className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
                                                         title="Eliminar cliente"
@@ -399,7 +396,7 @@ const Settings = () => {
                     <div className="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
                         <div className="p-6 border-b border-slate-100 flex justify-between items-center">
                             <h3 className="font-black text-lg text-slate-900 flex items-center gap-2">
-                                <Shield className="text-[#ec5b13]" size={20} /> Nuevo Administrador
+                                <Shield className="text-[#1B9B9A]" size={20} /> Nuevo Administrador
                             </h3>
                             <button onClick={() => setShowAdminModal(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
                                 <X size={20} />
@@ -413,25 +410,25 @@ const Settings = () => {
                             )}
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Usuario</label>
-                                <input 
-                                    type="text" 
-                                    required 
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#ec5b13] focus:outline-none transition-colors"
+                                <input
+                                    type="text"
+                                    required
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors"
                                     value={newAdmin.username}
-                                    onChange={e => setNewAdmin({...newAdmin, username: e.target.value})}
+                                    onChange={e => setNewAdmin({ ...newAdmin, username: e.target.value })}
                                 />
                             </div>
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Contraseña</label>
-                                <input 
-                                    type="password" 
-                                    required 
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#ec5b13] focus:outline-none transition-colors"
+                                <input
+                                    type="password"
+                                    required
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors"
                                     value={newAdmin.password}
-                                    onChange={e => setNewAdmin({...newAdmin, password: e.target.value})}
+                                    onChange={e => setNewAdmin({ ...newAdmin, password: e.target.value })}
                                 />
                             </div>
-                            <button type="submit" className="w-full bg-[#ec5b13] text-white font-black rounded-2xl py-4 shadow-lg shadow-orange-200 active:scale-95 transition-all">
+                            <button type="submit" className="w-full bg-[#1B9B9A] text-white font-black rounded-2xl py-4 shadow-lg shadow-[#1B9B9A]/20 active:scale-95 transition-all">
                                 Crear Cuenta
                             </button>
                         </form>
@@ -443,9 +440,9 @@ const Settings = () => {
             {showAnnouncementModal && (
                 <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
                     <div className="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
-                        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-purple-50/50">
+                        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-[#1B9B9A]/5">
                             <h3 className="font-black text-lg text-slate-900 flex items-center gap-2">
-                                <span className="material-symbols-outlined text-purple-600">add_photo_alternate</span> Crear Aviso
+                                <span className="material-symbols-outlined text-[#1B9B9A]">add_photo_alternate</span> Crear Aviso
                             </h3>
                             <button onClick={() => setShowAnnouncementModal(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
                                 <X size={20} />
@@ -454,41 +451,41 @@ const Settings = () => {
                         <form onSubmit={handleCreateAnnouncement} className="p-6 space-y-5">
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Título del Aviso</label>
-                                <input 
-                                    type="text" 
-                                    required 
+                                <input
+                                    type="text"
+                                    required
                                     placeholder="Ej. Promoción de Primavera"
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-purple-500 focus:outline-none transition-colors"
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors"
                                     value={newAnnouncement.title}
-                                    onChange={e => setNewAnnouncement({...newAnnouncement, title: e.target.value})}
+                                    onChange={e => setNewAnnouncement({ ...newAnnouncement, title: e.target.value })}
                                 />
                             </div>
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Descripción (Opcional)</label>
-                                <textarea 
+                                <textarea
                                     placeholder="Detalles del anuncio..."
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-purple-500 focus:outline-none transition-colors min-h-[100px] resize-none"
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors min-h-[100px] resize-none"
                                     value={newAnnouncement.description}
-                                    onChange={e => setNewAnnouncement({...newAnnouncement, description: e.target.value})}
+                                    onChange={e => setNewAnnouncement({ ...newAnnouncement, description: e.target.value })}
                                 ></textarea>
                             </div>
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">URL de la Imagen</label>
-                                <input 
-                                    type="url" 
-                                    required 
+                                <input
+                                    type="url"
+                                    required
                                     placeholder="https://ejemplo.com/imagen.png"
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-purple-500 focus:outline-none transition-colors"
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors"
                                     value={newAnnouncement.imageUrl}
-                                    onChange={e => setNewAnnouncement({...newAnnouncement, imageUrl: e.target.value})}
+                                    onChange={e => setNewAnnouncement({ ...newAnnouncement, imageUrl: e.target.value })}
                                 />
                                 {newAnnouncement.imageUrl && (
                                     <div className="mt-4 rounded-xl overflow-hidden h-32 border-2 border-slate-100">
-                                        <img src={newAnnouncement.imageUrl} alt="Preview" className="w-full h-full object-cover" onError={(e) => e.target.style.display='none'} onLoad={(e) => e.target.style.display='block'} />
+                                        <img src={newAnnouncement.imageUrl} alt="Preview" className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} onLoad={(e) => e.target.style.display = 'block'} />
                                     </div>
                                 )}
                             </div>
-                            <button type="submit" className="w-full bg-purple-600 text-white font-black rounded-2xl py-4 shadow-lg shadow-purple-200 active:scale-95 transition-all flex justify-center items-center gap-2">
+                            <button type="submit" className="w-full bg-[#1B9B9A] text-white font-black rounded-2xl py-4 shadow-lg shadow-[#1B9B9A]/20 active:scale-95 transition-all flex justify-center items-center gap-2">
                                 <Save size={18} /> Publicar Aviso
                             </button>
                         </form>
@@ -500,9 +497,9 @@ const Settings = () => {
             {editingCustomer && (
                 <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
                     <div className="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
-                        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-blue-50/50">
+                        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-[#1B9B9A]/5">
                             <h3 className="font-black text-lg text-slate-900 flex items-center gap-2">
-                                <Edit2 className="text-blue-500" size={20} /> Editar Cliente
+                                <Edit2 className="text-[#1B9B9A]" size={20} /> Editar Cliente
                             </h3>
                             <button onClick={() => setEditingCustomer(null)} className="text-slate-400 hover:text-slate-600 transition-colors">
                                 <X size={20} />
@@ -511,32 +508,32 @@ const Settings = () => {
                         <form onSubmit={handleSaveCustomer} className="p-6 space-y-5">
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Nombre Completo</label>
-                                <input 
-                                    type="text" 
-                                    required 
+                                <input
+                                    type="text"
+                                    required
                                     placeholder="Ej. Juan Pérez"
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-blue-500 focus:outline-none transition-colors"
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors"
                                     value={editingCustomer.name}
                                     onChange={e => {
                                         const val = e.target.value;
                                         if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/.test(val)) {
-                                            setEditingCustomer({...editingCustomer, name: val});
+                                            setEditingCustomer({ ...editingCustomer, name: val });
                                         }
                                     }}
                                 />
                             </div>
                             <div>
                                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Teléfono</label>
-                                <input 
-                                    type="tel" 
-                                    required 
+                                <input
+                                    type="tel"
+                                    required
                                     placeholder="10 dígitos (Ej. 5512345678)"
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-blue-500 focus:outline-none transition-colors"
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-4 py-3 font-bold focus:border-[#1B9B9A] focus:outline-none transition-colors"
                                     value={editingCustomer.phone}
                                     onChange={e => {
                                         const val = e.target.value.replace(/\D/g, ''); // Solo números
                                         if (val.length <= 10) {
-                                            setEditingCustomer({...editingCustomer, phone: val});
+                                            setEditingCustomer({ ...editingCustomer, phone: val });
                                         }
                                     }}
                                 />
@@ -544,10 +541,10 @@ const Settings = () => {
                                     <p className="text-red-500 text-[10px] font-bold mt-2 ml-1">El teléfono debe tener exactamente 10 dígitos.</p>
                                 )}
                             </div>
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 disabled={editingCustomer.name.trim().length < 3 || editingCustomer.phone.length !== 10}
-                                className="w-full bg-blue-600 text-white font-black rounded-2xl py-4 shadow-lg shadow-blue-200 active:scale-95 transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-[#1B9B9A] text-white font-black rounded-2xl py-4 shadow-lg shadow-[#1B9B9A]/20 active:scale-95 transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <Save size={18} /> Guardar Cambios
                             </button>

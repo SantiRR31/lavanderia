@@ -62,12 +62,12 @@ const Reports = () => {
         datasets: [{
             label: 'Ingresos ($)',
             data: data.revenueByDate.map(d => d.amount),
-            backgroundColor: 'rgba(236, 91, 19, 0.2)', // #ec5b13 with opacity
-            borderColor: '#ec5b13',
+            backgroundColor: 'rgba(27, 155, 154, 0.15)', // #1b9b9a with opacity
+            borderColor: '#1b9b9a',
             borderWidth: 3,
             tension: 0.4,
             fill: true,
-            pointBackgroundColor: '#ec5b13',
+            pointBackgroundColor: '#1b9b9a',
             pointBorderColor: '#fff',
             pointBorderWidth: 2,
             pointRadius: 4,
@@ -79,8 +79,15 @@ const Reports = () => {
         labels: data.serviceDistribution.map(s => s.name),
         datasets: [{
             data: data.serviceDistribution.map(s => s.value),
-            backgroundColor: ['#ec5b13', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6'],
-            borderWidth: 0,
+            backgroundColor: [
+                '#1B9B9A', // principal
+                '#2FAFAE',
+                '#4FC3C2',
+                '#6EC6C5',
+                '#AEE3E2'
+            ],
+            borderWidth: 2,
+            borderColor: '#ffffff',
             hoverOffset: 15
         }]
     };
@@ -89,7 +96,7 @@ const Reports = () => {
         <div className="space-y-8 animate-in fade-in duration-500">
             <header className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-black text-slate-900 tracking-tight">Reportes y Analíticas</h1>
+                    <h1 className="text-3xl font-black text-[#1B9B9A] tracking-tight">Reportes y Analíticas</h1>
                     <p className="text-slate-500 font-medium mt-1">Desempeño de la lavandería.</p>
                 </div>
             </header>
@@ -97,7 +104,7 @@ const Reports = () => {
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-5 hover:shadow-md transition-shadow">
-                    <div className="w-14 h-14 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f4f8] text-green-600 flex items-center justify-center shrink-0">
                         <CircleDollarSign size={28} />
                     </div>
                     <div>
@@ -107,7 +114,7 @@ const Reports = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-5 hover:shadow-md transition-shadow">
-                    <div className="w-14 h-14 rounded-2xl bg-orange-100 text-[#ec5b13] flex items-center justify-center shrink-0">
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f4f8] text-[#ec5b13] flex items-center justify-center shrink-0">
                         <TrendingUp size={28} />
                     </div>
                     <div>
@@ -117,7 +124,7 @@ const Reports = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-5 hover:shadow-md transition-shadow">
-                    <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f4f8] text-blue-600 flex items-center justify-center shrink-0">
                         <PackageOpen size={28} />
                     </div>
                     <div>
@@ -127,7 +134,7 @@ const Reports = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-5 hover:shadow-md transition-shadow">
-                    <div className="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f4f8] text-purple-600 flex items-center justify-center shrink-0">
                         <CheckSquare size={28} />
                     </div>
                     <div>
@@ -187,7 +194,7 @@ const Reports = () => {
                     {/* Top Customers */}
                     <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                         <div className="p-6 border-b border-slate-50 flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-xl bg-orange-100 text-[#ec5b13] flex items-center justify-center">
+                            <div className="w-8 h-8 rounded-xl bg-[#f0f4f8] text-[#ec5b13] flex items-center justify-center">
                                 <span className="material-symbols-outlined text-sm">star</span>
                             </div>
                             <h3 className="font-black text-slate-800">Mejores clientes</h3>
@@ -198,7 +205,7 @@ const Reports = () => {
                             ) : (
                                 <div className="space-y-4">
                                     {data.topCustomers.map((customer, index) => (
-                                        <div key={customer.id} className="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition-colors">
+                                        <div key={customer.id} className="flex items-center justify-between p-3 rounded-2xl bg-[#f0f4f8] hover:bg-slate-50 transition-colors">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-10 h-10 rounded-full bg-slate-900 text-white font-black flex items-center justify-center text-sm shadow-md">
                                                     #{index + 1}
@@ -221,7 +228,7 @@ const Reports = () => {
                     {/* Ontime orders */}
                     <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                         <div className="p-6 border-b border-slate-50 flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-xl bg-green-100 text-green-500 flex items-center justify-center">
+                            <div className="w-8 h-8 rounded-xl bg-[#f0f4f8] text-green-500 flex items-center justify-center">
                                 <Clock size={16} strokeWidth={3} />
                             </div>
                             <h3 className="font-black text-slate-800">Proximos</h3>
@@ -262,7 +269,7 @@ const Reports = () => {
                     {/* Overdue Orders */}
                     <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
                         <div className="p-6 border-b border-slate-50 flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-xl bg-red-100 text-red-500 flex items-center justify-center">
+                            <div className="w-8 h-8 rounded-xl bg-[#f0f4f8] text-red-500 flex items-center justify-center">
                                 <Clock size={16} strokeWidth={3} />
                             </div>
                             <h3 className="font-black text-slate-800">Atrasados</h3>
