@@ -1,10 +1,16 @@
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import api from '../api';
 
 const Layout = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const logout = () => {
+    const logout = async () => {
+        try {
+            await api.post('/auth/logout');
+        } catch (err) {
+            console.error('Error al cerrar sesión:', err);
+        }
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         navigate('/login');

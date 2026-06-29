@@ -10,8 +10,8 @@ import Settings from './pages/Settings';
 import Reports from './pages/Reports';
 
 const PrivateRoute = ({ children }) => {
-    const token = localStorage.getItem('token');
-    return token ? children : <Navigate to="/login" />;
+    const username = localStorage.getItem('username');
+    return username ? children : <Navigate to="/login" />;
 };
 
 function App() {

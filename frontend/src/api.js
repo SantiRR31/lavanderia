@@ -1,22 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: `http://${window.location.hostname}:5000/api`,
+    withCredentials: true, // Crucial for sending/receiving HttpOnly cookies
 });
-
-// Request interceptor: attach token
-api.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            config.headers['Authorization'] = token;
-        }
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
-    }
-);
 
 // Response interceptor: handle unauthorized errors
 api.interceptors.response.use(
@@ -24,7 +11,7 @@ api.interceptors.response.use(
     (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
             // Token expired or invalid
-            localStorage.removeItem('token');
+            localStorage.removeItem('username');
             window.location.href = '/login';
         }
         return Promise.reject(error);

@@ -61,15 +61,26 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// Toggle active status
+// Toggle announcement active status
 router.patch('/:id/toggle', async (req, res) => {
     try {
         const { id } = req.params;
-        const announcement = await prisma.announcement.findUnique({ where: { id: parseInt(id) } });
+
+        // Find current status first
+        const announcement = await prisma.announcement.findUnique({
+            where: { id: parseInt(id) }
+        });
+
+        if (!announcement) {
+            return res.status(404).json({ error: 'Announcement not found' });
+        }
+
+        // Update with the opposite status
         const updated = await prisma.announcement.update({
             where: { id: parseInt(id) },
             data: { active: !announcement.active }
         });
+
         res.json(updated);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -84,6 +95,18 @@ router.delete('/:id', async (req, res) => {
             where: { id: parseInt(id) }
         });
         res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Delete all inactive announcements (Useful for bulk cleanups)
+router.delete('/bulk/inactive', async (req, res) => {
+    try {
+        const result = await prisma.announcement.deleteMany({
+            where: { active: false }
+        });
+        res.json({ success: true, deletedCount: result.count, message: 'Anuncios inactivos eliminados' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

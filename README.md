@@ -17,10 +17,15 @@ Este sistema permite a una lavandería gestionar pedidos de clientes mediante un
 ### 1. Configuración del Backend
 
 1. Entra en la carpeta `backend/`.
-2. Actualiza el archivo `.env` con tu cadena de conexión de PostgreSQL:
-   ```
-   DATABASE_URL="postgresql://USUARIO:CONTRASEÑA@localhost:5432/laundry_db?schema=public"
-   ```
+2. El proyecto cuenta con soporte para **Entornos Separados**:
+   - Para desarrollo: Copia o renombra el archivo `.env.example` a `.env.development` y configura tus variables locales (base de datos de desarrollo, secretos, CORS origen).
+   - Para producción: Copia o renombra a `.env.production` o usa variables de entorno en tu plataforma de despliegue.
+   - Las variables clave a configurar son:
+     - `NODE_ENV`: Indica el entorno actual (`development` o `production`).
+     - `PORT`: Puerto en el que correrá el servidor.
+     - `DATABASE_URL`: Cadena de conexión de PostgreSQL.
+     - `JWT_SECRET`: Llave secreta para firmar tokens.
+     - `ALLOWED_ORIGINS`: Lista separada por comas de orígenes permitidos para CORS (ej: `http://localhost:5173`).
 3. Ejecuta los siguientes comandos para sincronizar la base de datos y generar el cliente de Prisma:
    ```bash
    npm install
@@ -32,10 +37,17 @@ Este sistema permite a una lavandería gestionar pedidos de clientes mediante un
    ```bash
    node prisma/seed.js
    ```
-5. Inicia el servidor de desarrollo:
-   ```bash
-   npm run dev
-   ```
+5. Inicia el servidor en el entorno deseado:
+   - **Desarrollo**:
+     ```bash
+     npm run dev
+     ```
+     *(Cargará el archivo `.env.development` y el logger mostrará los eventos en consola además de guardarlos).*
+   - **Producción**:
+     ```bash
+     NODE_ENV=production npm start
+     ```
+     *(Cargará el archivo `.env.production` e iniciará en modo seguro con cabeceras Helmet reforzadas).*
 
 ### 2. Configuración del Frontend
 
